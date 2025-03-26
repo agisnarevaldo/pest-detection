@@ -54,7 +54,7 @@ p:focus {
 a, button {
   text-decoration: none;
   outline: none !important;
-  color: #878787;
+  /* color: #878787; */
   -webkit-transition: all 0.25s ease;
   -moz-transition: all 0.25s ease;
   -ms-transition: all 0.25s ease;
@@ -370,7 +370,7 @@ header.fixed-top {
   position: inherit; }
 
 .menutoggle {
-  background: #e74c3c;
+  background:rgb(58, 51, 51);
   border-radius: 50%;
   color: #fff !important;
   cursor: pointer;
