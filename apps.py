@@ -21,10 +21,10 @@ from flask_cors import CORS
 app = Flask(__name__)
 
 # load model for prediction
-modelnasnet = load_model("NASNetMobile.h5")
-modelvgg = load_model("VGG16.h5")
-modelxception = load_model("Xception.h5")
-modelcnn = load_model("scratchCNN.h5")
+# modelnasnet = load_model("NASNetMobile.h5")
+# modelvgg = load_model("VGG16.h5")
+# modelxception = load_model("Xception.h5")
+# modelcnn = load_model("scratchCNN.h5")
 
 
 UPLOAD_FOLDER = 'static/uploads/'
