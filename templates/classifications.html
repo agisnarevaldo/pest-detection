@@ -1,252 +1,112 @@
-<!doctype html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
-<!--[if gt IE 8]><!-->
-<html class="no-js" lang="">
-<!--<![endif]-->
-
+<!DOCTYPE html>
+<html lang="id">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Pestection Admin - HTML5 Admin Template</title>
-    <meta name="description" content="Sufee Admin - HTML5 Admin Template">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link rel="apple-touch-icon" href="apple-icon.png">
-    <link rel="shortcut icon" href="favicon.ico">
-
-    <link rel="stylesheet" href="/static/pestectionadmin/assets/css/normalize.css">
-    <link rel="stylesheet" href="/static/pestectionadmin/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/static/pestectionadmin/assets/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/static/pestectionadmin/assets/css/themify-icons.css">
-    <link rel="stylesheet" href="/static/pestectionadmin/assets/css/flag-icon.min.css">
-    <link rel="stylesheet" href="/static/pestectionadmin/assets/css/cs-skin-elastic.css">
-    <!-- <link rel="stylesheet" href="assets/css/bootstrap-select.less"> -->
-    <link rel="stylesheet" href="/static/pestectionadmin/assets/scss/style.css">
-    <link rel="stylesheet" href="/static/pestectionadmin/assets/scss/widgets.css">
-    <link href="/static/pestectionadmin/assets/css/lib/vector-map/jqvmap.min.css" rel="stylesheet">
-
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
-
-    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PestEction Admin - Image Classification</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-
-<body>
-
-
-    <!-- Left Panel -->
-
-    <aside id="left-panel" class="left-panel">
-        <nav class="navbar navbar-expand-sm navbar-default">
-
-            <div class="navbar-header">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu"
-                    aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="fa fa-bars"></i>
-                </button>
-                <a class="navbar-brand" href="./"><img src="/static/pestectionadmin/images/logo.png" alt="Logo"></a>
-                <a class="navbar-brand hidden" href="./"><img src="/static/pestectionadmin/images/logo2.png" alt="Logo"></a>
-            </div>
-
-            <div id="main-menu" class="main-menu collapse navbar-collapse">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a href="{{ url_for('main') }}"> <i class="menu-icon fa fa-fort-awesome"></i>CNN Model </a>
-                    </li>
-                    <li>
-                        <a href="{{ url_for('classification') }}"> <i class="menu-icon fa fa-image"></i>Image
-                            Classification </a>
-                    </li>
-                </ul>
-            </div><!-- /.navbar-collapse -->
-        </nav>
-    </aside><!-- /#left-panel -->
-
-    <!-- Left Panel -->
-
-    <!-- Right Panel -->
-
-    <div id="right-panel" class="right-panel">
-
-        <!-- Header-->
-        <header id="header" class="header">
-
-            <div class="header-menu">
-
-                <div class="col-sm-7">
-                    <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
-                    <div class="header-left">
-                    </div>
+<body style="font-family: 'Roboto', sans-serif !important; background-color: #f7f9fc !important; margin: 0 !important;">
+  <!-- Header -->
+  <header class="py-3" style="background-color: #234486 !important; color: #fff !important;">
+    <div class="container d-flex justify-content-between align-items-center">
+      <a class="navbar-brand" href="#" style="font-weight: bold !important; font-size: 1.5rem !important;">
+        CekHama
+      </a>
+      <nav>
+        <a class="nav-link d-inline mx-2" href="/" style="color: #fff !important;">CNN Model</a>
+        <a class="nav-link d-inline mx-2" href="/classification" style="color: #fff !important;">Image Classification</a>
+      </nav>
+      <div class="user-menu">
+        <h3>🐞</h3>
+        <!-- <img class="user-avatar rounded-circle" src="/static/pestectionadmin/images/admin.jpg" alt="User Avatar"> -->
+      </div>
+    </div>
+  </header>
+  
+  <div class="d-flex">
+    <!-- Sidebar -->
+    <!-- <aside class="p-3" style="background-color: #fff !important; border-right: 1px solid #dee2e6 !important; min-height: 100vh !important;">
+      <a href="#" style="display: block !important; color: #343a40 !important; padding: 15px !important; text-decoration: none !important;">Dashboard</a>
+      <a href="#" style="display: block !important; color: #343a40 !important; padding: 15px !important; text-decoration: none !important;">Analytics</a>
+      <a href="#" style="display: block !important; color: #343a40 !important; padding: 15px !important; text-decoration: none !important;">Reports</a>
+      <a href="#" style="display: block !important; color: #343a40 !important; padding: 15px !important; text-decoration: none !important;">Settings</a>
+    </aside> -->
+    <!-- Main Content -->
+    <main class="flex-fill" style="padding: 20px !important;">
+      <div class="container-fluid">
+        <div class="row mb-4">
+          <!-- Input Image Card -->
+          <div class="col-lg-6" style="margin-bottom: 20px !important;">
+            <div style="border: none !important; border-radius: 10px !important; box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important; background-color: #fff !important; padding: 20px !important;">
+              <h4 style="font-weight: 500 !important; margin-bottom: 15px !important;">Input Image</h4>
+              <form action="/submit" method="post" enctype="multipart/form-data">
+                <div class="row form-group" style="margin-bottom: 15px !important;">
+                  <div class="col-md-3">
+                    <label for="file-input" style="font-weight: 500 !important;">File Input</label>
+                  </div>
+                  <div class="col-md-9">
+                    <input type="file" id="file" name="file" class="form-control-file" style="border: 1px solid #ced4da !important; border-radius: 5px !important; padding: 5px !important;">
+                  </div>
                 </div>
-
-                <div class="col-sm-5">
-                    <div class="user-area dropdown float-right">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false">
-                            <img class="user-avatar rounded-circle" src="/static/pestectionadmin/images/admin.jpg"
-                                alt="User Avatar">
-                        </a>
-                    </div>
+                <div class="row">
+                  <div class="col-md-3"></div>
+                  <button type="submit" class="btn btn-primary" style="background-color: #1cc88a !important; border: none !important; border-radius: 5px !important; padding: 10px 20px !important;">Submit</button>
                 </div>
+              </form>
             </div>
-
-        </header><!-- /header -->
-        <!-- Header-->
-        <div class="content mt-3">
-            <div class="col-lg-6">
-                <div class="card">
-                    <div class="card-header">
-                        <h4>Input Image</h4>
-                    </div>
-                    <div class="card-body">
-                        <form action="/submit" method="post" enctype="multipart/form-data">
-                            <div class="row form-group">
-                                <div class="col col-md-3"><label for="file-input" class=" form-control-label">File
-                                        input</label></div>
-                                <div class="col-12 col-md-9"><input type="file" id="file" name="file"
-                                        class="form-control-file">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-3" style="margin-left: 15px;"></div>
-                                <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+          </div>
+          <!-- Classification Result Card -->
+          <div class="col-lg-6" style="margin-bottom: 20px !important;">
+            <div style="border: none !important; border-radius: 10px !important; box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important; background-color: #fff !important; padding: 20px !important;">
+              <h4 style="font-weight: 500 !important; margin-bottom: 15px !important;">Classification Result</h4>
+              <div class="text-center" style="color: #343a40 !important;">
+                {% if predictionxception %}
+                  <img src="{{img_path}}" alt="Gambar Prediksi" style="max-width: 50% !important; height: auto !important; border-radius: 5px !important;"><br>
+                  <h4 style="margin-top: 15px !important;">CNN add Model Xception</h4>
+                  <h4 style="margin-top: 5px !important;">Prediction: <i>{{predictionxception}}</i></h4><br>
+                {% endif %}
+                {% if predictionvgg %}
+                  <h4 style="margin-top: 15px !important;">CNN add Model VGG16</h4>
+                  <h4 style="margin-top: 5px !important;">Prediction: <i>{{predictionvgg}}</i></h4><br>
+                {% endif %}
+                {% if predictionnasnet %}
+                  <h4 style="margin-top: 15px !important;">CNN add Model NASNetMobile</h4>
+                  <h4 style="margin-top: 5px !important;">Prediction: <i>{{predictionnasnet}}</i></h4><br>
+                {% endif %}
+                {% if predictioncnn %}
+                  <h4 style="margin-top: 15px !important;">CNN from Scratch</h4>
+                  <h4 style="margin-top: 5px !important;">Prediction: <i>{{predictioncnn}}</i></h4>
+                {% endif %}
+              </div>
             </div>
-            <div class="col-lg-6">
-                <div class="card">
-                    <div class="card-header">
-                        <h4>Classification Result</h4>
-                    </div>
-                    <div class="card-body text-center">
-                        {% if predictionxception %}
-                        <img src="{{img_path}}" alt="gambar prediksi" height="50%" width="50%"><br>
-                        <h4> CNN add Model Xception</h4>
-                        <!-- <h4> Confidence : <i> {{confidenceexception}} </i></h4><br> -->
-                        <h4>Prediction : <i> {{predictionxception}} </i></h4><br>
-                        {% endif %}
-                        {% if predictionvgg %}
-                        <h4> CNN add Model VGG16</h4>
-                        <!-- <h4> Confidence : <i> {{confidencvgg}} </i></h4><br> -->
-                        <h4>Prediction : <i> {{predictionvgg}} </i></h4><br>
-                        {% endif %}
-                        {% if predictionnasnet %}
-                        <h4> CNN add Model NASNetMobile</h4>
-                        <!-- <h4> Confidence : <i> {{confidencenasnet}} </i></h4><br> -->
-                        <h4>Prediction : <i> {{predictionnasnet}} </i></h4><br>
-                        {% endif %}
-                        {% if predictioncnn %}
-                        <h4> CNN from Scartch</h4>
-                        <!-- <h4> Confidence : <i> {{confidencecnn}} </i></h4><br> -->
-                        <h4>Prediction : <i> {{predictioncnn}} </i></h4>
-                        {% endif %}
-                        
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
-        <!--/.col-->
-
-
-        <!--/.col-->
-
-
-        <!--/.col-->
-
-
-        <!--/.col-->
-
-
-        <!-- Right Panel -->
-
-        <script src="/static/pestectionadmin/assets/js/vendor/jquery-2.1.4.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
-        <script src="/static/pestectionadmin/assets/js/vendor/jquery-2.1.4.min.js"></script>
-        <script src="/static/pestectionadmin/assets/js/popper.min.js"></script>
-        <script src="/static/pestectionadmin/assets/js/plugins.js"></script>
-        <script src="/static/pestectionadmin/assets/js/main.js"></script>
-        <script src="/static/pestectionadmin/assets/js/lib/chart-js/Chart.bundle.js"></script>
-
-
-        <script src="/static/pestectionadmin/assets/js/lib/chart-js/Chart.bundle.js"></script>
-        <script src="/static/pestectionadmin/assets/js/dashboard.js"></script>
-        <script src="/static/pestectionadmin/assets/js/widgets.js"></script>
-        <script src="/static/pestectionadmin/assets/js/lib/vector-map/jquery.vmap.js"></script>
-        <script src="/static/pestectionadmin/assets/js/lib/vector-map/jquery.vmap.min.js"></script>
-        <script src="/static/pestectionadmin/assets/js/lib/vector-map/jquery.vmap.sampledata.js">
-        </script>
-        <script src="/static/pestectionadmin/assets/js/lib/vector-map/country/jquery.vmap.world.js">
-        </script>
-        <script>
-            (function ($) {
-                "use strict";
-
-                jQuery('#vmap').vectorMap({
-                    map: 'world_en',
-                    backgroundColor: null,
-                    color: '#ffffff',
-                    hoverOpacity: 0.7,
-                    selectedColor: '#1de9b6',
-                    enableZoom: true,
-                    showTooltip: true,
-                    values: sample_data,
-                    scaleColors: ['#1de9b6', '#03a9f5'],
-                    normalizeFunction: 'polynomial'
-                });
-            })(jQuery);
-        </script>
-        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-        <script>
-            const form = document.querySelector("form");
-            const confidencenasnet = document.getElementById("confidencenasnet");
-            const predictionnasnet = document.getElementById("predictionnasnet");
-            const confidencevgg = document.getElementById("confidencevgg");
-            const predictionvgg = document.getElementById("predictionvgg");
-            const confidenceexception= document.getElementById("confidenceexception");
-            const predictionxception = document.getElementById("predictionxception");
-            const confidencecnn = document.getElementById("confidencecnn");
-            const predictioncnn = document.getElementById("predictioncnn");
-    
-            form.addEventListener("submit", (e) => {
-            confidencenasnet.innerHTML = '';
-            predictionnasnet.innerHTML = '';
-            confidencevgg.innerHTML = '';
-            predictionvgg.innerHTML = '';
-            confidenceexception.innerHTML = '';
-            predictionxception.innerHTML = '';
-            confidencecnn.innerHTML = '';
-            predictioncnn.innerHTML = '';
-            e.preventDefault();
-            const formData = new FormData(form);
-            axios
-                .post("/submit", formData, {
-                headers: {
-                    "Content-Type": "multipart/form-data",
-                },
-                })
-                .then((res) => {
-                document.getElementById("image").src = `${res.data.data.filename}`;
-                confidencenasnet.append(res.data.data.confidencenasnet);
-                predictionnasnet.append(res.data.data.predictionnasnet);
-                confidencevgg.append(res.data.data.confidencevgg);
-                predictionvgg.append(res.data.data.predictionvgg);
-                confidencexception.append(res.data.data.confidenceexception);
-                predictionxception.append(res.data.data.predictionxception);
-                confidencecnn.append(res.data.data.confidencecnn);
-                predictioncnn.append(res.data.data.predictioncnn);
-                console.log(res.data.data);
-                })
-                .catch((err) => {
-                console.log(err);
-                });
-            });
-        </script>
+      </div>
+    </main>
+  </div>
+  
+  <!-- JavaScript Bootstrap & Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Tambahan script untuk interaksi form (jika diperlukan) -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+    const form = document.querySelector("form");
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const formData = new FormData(form);
+      axios.post("/submit", formData, {
+        headers: {"Content-Type": "multipart/form-data"}
+      })
+      .then((res) => {
+        // Contoh penanganan respons, pastikan id elemen sesuai dengan template Anda
+        console.log(res.data.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+    });
+  </script>
 </body>
-
-
-
 </html>
