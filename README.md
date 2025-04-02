@@ -1,7 +1,6 @@
-== DEPLOYMENT PENDETEKSI HAMI SAWI HIJAU BERBASIS WEB ==
+# Pest Detection
 
-TUTORIAL PENGGUNAAN, 
-- install library ini 
+# Requirements
 1. tensorflow 
 2. Keras 
 3. numpy 
@@ -11,6 +10,14 @@ TUTORIAL PENGGUNAAN,
 7. matplotlib 
 8. os
 9. seaborn
+
+# How to install package?
+*you can install the package use this command:
+```bash
+pip install tensorflow keras numpy pandas imutils sklearn matplotlib os seaborn
+```
+
+# how to star apps
 
 OPEN ANACONDA TERMINAL PADA FOLDER INI
 JALANKAN "python apps.py"
