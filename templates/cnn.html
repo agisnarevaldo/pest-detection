@@ -100,16 +100,24 @@
                 <!-- Tab Navigation -->
                 <ul class="nav nav-tabs" id="experimentTab" role="tablist">
                   <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="chart-tab" data-bs-toggle="tab" data-bs-target="#chart" type="button" role="tab" style="color: inherit !important;">Chart</button>
+                    <button class="nav-link active" id="chart-tab" data-bs-toggle="tab" data-bs-target="#chart" type="button" role="tab" style="color: inherit !important;">
+                      Chart
+                    </button>
                   </li>
                   <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="confusion-tab" data-bs-toggle="tab" data-bs-target="#confusion" type="button" role="tab" style="color: inherit !important;">Confusion Matrix</button>
+                    <button class="nav-link" id="confusion-tab" data-bs-toggle="tab" data-bs-target="#confusion" type="button" role="tab" style="color: inherit !important;">
+                      Confusion Matrix
+                    </button>
                   </li>
                   <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="original-tab" data-bs-toggle="tab" data-bs-target="#original" type="button" role="tab" style="color: inherit !important;">Image Original</button>
+                    <button class="nav-link" id="original-tab" data-bs-toggle="tab" data-bs-target="#original" type="button" role="tab" style="color: inherit !important;">
+                      Image Original
+                    </button>
                   </li>
                   <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="rgb-tab" data-bs-toggle="tab" data-bs-target="#rgb" type="button" role="tab" style="color: inherit !important;">Image RGB</button>
+                    <button class="nav-link" id="rgb-tab" data-bs-toggle="tab" data-bs-target="#rgb" type="button" role="tab" style="color: inherit !important;">
+                      Image RGB
+                    </button>
                   </li>
                 </ul>
                 <!-- Tab Content -->
@@ -118,6 +126,10 @@
                     <h5 class="mb-3">Percobaan A-F dari CNN</h5>
                     <div class="row g-3">
                       <div class="col-md-4">
+                        <img src="/static/hasilX.jpeg" alt="Percobaan A" style="max-width: 100% !important; height: auto !important; border-radius: 5px !important;">
+                        <p class="text-center mt-2" style="color: inherit !important;">A Xception</p>
+                      </div>
+                      <!-- <div class="col-md-4">
                         <img src="/static/hasilA.png" alt="Percobaan A" style="max-width: 100% !important; height: auto !important; border-radius: 5px !important;">
                         <p class="text-center mt-2" style="color: inherit !important;">A-CNN from Scratch</p>
                       </div>
@@ -140,12 +152,16 @@
                       <div class="col-md-4">
                         <img src="/static/hasilF.png" alt="Percobaan F" style="max-width: 100% !important; height: auto !important; border-radius: 5px !important;">
                         <p class="text-center mt-2" style="color: inherit !important;">F-CNN + NASNetMobile</p>
-                      </div>
+                      </div> -->
                     </div>
                   </div>
                   <div class="tab-pane fade" id="confusion" role="tabpanel">
                     <div class="row g-3">
                       <div class="col-md-4">
+                        <img src="/static/cmX.jpeg" alt="Confusion Matrix A" style="max-width: 100% !important; height: auto !important; border-radius: 5px !important;">
+                        <p class="text-center mt-2" style="color: inherit !important;">A-CNN + Xception</p>
+                      </div>
+                      <!-- <div class="col-md-4">
                         <img src="/static/cmA.png" alt="Confusion Matrix A" style="max-width: 100% !important; height: auto !important; border-radius: 5px !important;">
                         <p class="text-center mt-2" style="color: inherit !important;">A-CNN from Scratch</p>
                       </div>
@@ -168,7 +184,7 @@
                       <div class="col-md-4 mt-3">
                         <img src="/static/cmF.png" alt="Confusion Matrix F" style="max-width: 100% !important; height: auto !important; border-radius: 5px !important;">
                         <p class="text-center mt-2" style="color: inherit !important;">F-CNN + NASNetMobile</p>
-                      </div>
+                      </div> -->
                     </div>
                   </div>
                   <div class="tab-pane fade" id="original" role="tabpanel">
