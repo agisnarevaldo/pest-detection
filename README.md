@@ -17,7 +17,7 @@
 pip install tensorflow keras numpy pandas imutils sklearn matplotlib os seaborn
 ```
 
-# how to star apps
+# how to start apps
 
 OPEN ANACONDA TERMINAL PADA FOLDER INI
 JALANKAN "python apps.py"
