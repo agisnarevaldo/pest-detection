@@ -21,6 +21,7 @@ from flask_cors import CORS
 app = Flask(__name__)
 
 # load model for prediction
+modelxception_aug = load_model("A_XCEPTION_AUG_64.h5")
 # modelnasnet = load_model("NASNetMobile.h5")
 # modelvgg = load_model("VGG16.h5")
 # modelxception = load_model("Xception.h5")
@@ -75,36 +76,25 @@ def predict():
     img.close()
 
     # prepare image for prediction
-    img = image.load_img(predict_image_path, target_size=(128, 128, 3))
+    img = image.load_img(predict_image_path, target_size=(299, 299, 3))
     x = image.img_to_array(img)
-    x = x/127.5-1 
+    x = x / 127.5 - 1
     x = np.expand_dims(x, axis=0)
     images = np.vstack([x])
 
     # predict
-    prediction_array_nasnet = modelnasnet.predict(images)
-    prediction_array_vgg = modelvgg.predict(images)
-    prediction_array_xception = modelxception.predict(images)
-    prediction_array_cnn = modelcnn.predict(images)
+    prediction_array_xception_aug = modelxception_aug.predict(images)
 
-    # prepare api response
+    # extract prediction and confidence
     class_names = ['With Pest', 'Without Pest']
-    # result = {
-    #     "filename" : predict_image_path,
-    #     "prediction": class_names[np.argmax(prediction_array)],
-    #     "confidence": '{:2.0f}%'.format(100 * np.max(prediction_array))
-    # }
-	
-    return render_template("classifications.html", img_path = predict_image_path, 
-                        predictionnasnet = class_names[np.argmax(prediction_array_nasnet)],
-                        confidencenasnet = '{:2.0f}%'.format(100 * np.max(prediction_array_nasnet)),
-                        predictionvgg = class_names[np.argmax(prediction_array_vgg)],
-                        confidencvgg = '{:2.0f}%'.format(100 * np.max(prediction_array_vgg)),
-                        predictionxception = class_names[np.argmax(prediction_array_xception)],
-                        confidenceexception = '{:2.0f}%'.format(100 * np.max(prediction_array_xception)),
-                        predictioncnn = class_names[np.argmax(prediction_array_cnn)],
-                        confidencecnn = '{:2.0f}%'.format(100 * np.max(prediction_array_cnn))  
-                        )
+    predicted_class = class_names[np.argmax(prediction_array_xception_aug)]
+    confidence = '{:2.0f}%'.format(100 * np.max(prediction_array_xception_aug))
+
+    # render template with results
+    return render_template("classification.html", 
+                           img_path=predict_image_path,
+                           predicted_class=predicted_class,
+                           confidence=confidence)
 
 if __name__ =='__main__':
 	#app.debug = True
