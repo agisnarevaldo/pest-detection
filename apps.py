@@ -22,10 +22,6 @@ app = Flask(__name__)
 
 # load model for prediction
 modelxception_aug = load_model("A_XCEPTION_AUG_64.h5")
-# modelnasnet = load_model("NASNetMobile.h5")
-# modelvgg = load_model("VGG16.h5")
-# modelxception = load_model("Xception.h5")
-# modelcnn = load_model("scratchCNN.h5")
 
 
 UPLOAD_FOLDER = 'static/uploads/'
@@ -42,7 +38,7 @@ def main():
 
 @app.route("/classification", methods = ['GET', 'POST'])
 def classification():
-	return render_template("classifications.html")
+	return render_template("classification.html")
 
 @app.route('/submit', methods=['POST'])
 def predict():
@@ -50,51 +46,45 @@ def predict():
         resp = jsonify({'message': 'No image in the request'})
         resp.status_code = 400
         return resp
-    files = request.files.getlist('file')
-    filename = "temp_image.png"
-    errors = {}
-    success = False
-    for file in files:
-        if file and allowed_file(file.filename):
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            success = True
-        else:
-            errors["message"] = 'File type of {} is not allowed'.format(file.filename)
 
-    if not success:
-        resp = jsonify(errors)
+    file = request.files['file']
+    if file and allowed_file(file.filename):
+        # Save the uploaded file
+        filename = "temp_image.png"
+        file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+        file.save(file_path)
+
+        # Convert image to RGB and save it
+        img = Image.open(file_path).convert('RGB')
+        now = datetime.now()
+        predict_image_path = os.path.join(app.config['UPLOAD_FOLDER'], now.strftime("%d%m%y-%H%M%S") + ".png")
+        img.save(predict_image_path, format="png")
+        img.close()
+
+        # Prepare image for prediction
+        img = image.load_img(predict_image_path, target_size=(299, 299, 3))
+        x = image.img_to_array(img)
+        x = x / 127.5 - 1  # Normalize
+        x = np.expand_dims(x, axis=0)
+
+        # Predict using the model
+        prediction_array = modelxception_aug.predict(x)
+
+        # Extract prediction and confidence
+        class_names = ['Daun Sehat', 'Layu Bakteri', 'Powdery Mildew', 'Virus Kuning']
+        predicted_class = class_names[np.argmax(prediction_array)]
+        confidence = '{:2.0f}%'.format(100 * np.max(prediction_array))
+
+        # Render the template with results
+        return render_template("classification.html",
+                               img_path=predict_image_path,
+                               predicted_class=predicted_class,
+                               confidence=confidence)
+
+    else:
+        resp = jsonify({'message': 'Invalid file type'})
         resp.status_code = 400
         return resp
-    img_url = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-
-    # convert image to RGB
-    img = Image.open(img_url).convert('RGB')
-    now = datetime.now()
-    predict_image_path = 'static/uploads/' + now.strftime("%d%m%y-%H%M%S") + ".png"
-    image_predict = predict_image_path
-    img.convert('RGB').save(image_predict, format="png")
-    img.close()
-
-    # prepare image for prediction
-    img = image.load_img(predict_image_path, target_size=(299, 299, 3))
-    x = image.img_to_array(img)
-    x = x / 127.5 - 1
-    x = np.expand_dims(x, axis=0)
-    images = np.vstack([x])
-
-    # predict
-    prediction_array_xception_aug = modelxception_aug.predict(images)
-
-    # extract prediction and confidence
-    class_names = ['With Pest', 'Without Pest']
-    predicted_class = class_names[np.argmax(prediction_array_xception_aug)]
-    confidence = '{:2.0f}%'.format(100 * np.max(prediction_array_xception_aug))
-
-    # render template with results
-    return render_template("classification.html", 
-                           img_path=predict_image_path,
-                           predicted_class=predicted_class,
-                           confidence=confidence)
 
 if __name__ =='__main__':
 	#app.debug = True
